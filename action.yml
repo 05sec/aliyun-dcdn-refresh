@@ -1,0 +1,22 @@
+name: 'Aliyun DCDN Refresh'
+description: 'Refresh DCDN at once.'
+branding:
+  icon: 'upload'
+  color: 'blue'
+inputs:
+  AccessKeyId:
+    description: 'Aliyun access key id'
+    required: true
+  AccessKeySecret:
+    description: 'Aliyun access key secret'
+    required: true
+  ObjectPath:
+    description: 'Object to refresh'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    ACCESS_KEY_ID: ${{ inputs.AccessKeyId }}
+    ACCESS_KEY_SECRET: ${{ inputs.AccessKeySecret }}
+    OBJECT_PATH: ${{ inputs.ObjectPath }}
